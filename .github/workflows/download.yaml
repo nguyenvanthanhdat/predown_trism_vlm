@@ -13,6 +13,7 @@ jobs:
   prepare_model:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: download_weights
         uses: actions/setup-python@v4
         with:
