@@ -7,12 +7,9 @@ docker_image = os.getenv(
 hf_token   = os.getenv("HF_TOKEN", "")
 model_name = os.getenv("MODEL_NAME", "")
 
-model_path = model_name.split("/")[-1]
-
-
 file_info = f"""FROM {docker_image}
 
-COPY {model_path} /weights/{model_path}"""
+COPY {model_name} /weights/{model_name}"""
 
 with open("Dockerfile", "w") as f:
     f.write(file_info)
