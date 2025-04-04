@@ -10,7 +10,7 @@ on:
     branches:
       - execute
 jobs:
-  prepare_model:
+  Prepare docker image for triton inference vllm:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,9 +35,6 @@ jobs:
       - name: Download model
         run: |
           python download.py
-
-      - name: Checkout code
-        uses: actions/checkout@v2
       
       - name: Set up Python
         uses: actions/setup-python@v4
