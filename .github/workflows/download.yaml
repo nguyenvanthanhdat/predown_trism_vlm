@@ -57,7 +57,7 @@ jobs:
 
       - name: To lower case
         run: |
-          echo "MODEL_NAME_LOWE=${{env.MODEL_NAME}}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
+          echo "MODEL_NAME_LOWER=${{env.MODEL_NAME}}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
 
       - name: Build Docker image
         uses: docker/build-push-action@v5
