@@ -55,12 +55,16 @@ jobs:
           username: ${{ secrets.docker_username }}
           password: ${{ secrets.docker_password }}
 
+      - name: To lower case
+        run: |
+          echo "MODEL_NAME=${{env.MODEL_NAME}}" | tr '[:upper:]' '[:lower:]' >> $MODEL_NAME_LOWER
+
       - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
           push: true
           platforms: linux/amd64
-          tags: ${{secrets.docker_username}}/${{env.MODEL_NAME}}:latest
+          tags: ${{secrets.docker_username}}/${{env.MODEL_NAME_LOWER}}:latest
           # build-args: |
           #   HF_TOKEN=${{secrets.HUGGINGFACE_TOKEN
 
