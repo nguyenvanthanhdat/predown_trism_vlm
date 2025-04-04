@@ -10,7 +10,7 @@ on:
     branches:
       - execute
 jobs:
-  Prepare docker image for triton inference vllm:
+  Prepare_docker_image_for_triton_inference_vllm:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
