@@ -57,14 +57,14 @@ jobs:
 
       - name: To lower case
         run: |
-          echo "MODEL_NAME_LOWER=${{env.MODEL_NAME}}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
+          echo "MODEL_NAME_LOWER=$(echo '${{ env.MODEL_NAME }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
           push: true
           platforms: linux/amd64
-          tags: ${{secrets.docker_username}}/${{env.MODEL_NAME_LOWER}}:latest
+          tags: ${{ secrets.docker_username }}/${{ env.MODEL_NAME_LOWER }}:latest
           # build-args: |
           #   HF_TOKEN=${{secrets.HUGGINGFACE_TOKEN
 
