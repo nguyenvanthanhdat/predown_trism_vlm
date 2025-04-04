@@ -43,14 +43,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
 
       - name: Setup Dockerfile
-        with:
-          python-version: 3.11
         run: |
           python write_dockerfile.py
 
