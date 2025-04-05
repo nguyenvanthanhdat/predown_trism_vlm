@@ -5,7 +5,7 @@ env:
   MODEL_NAME: LLaMAX3-8B-Alpaca
   # DOCKER_IMAGE: nvcr.io/nvidia/tritonserver:24.12-vllm-python-py3
   TAG: 24.12-vllm
-  DOCKER_IMAGE: hieupth/tritonserver:${{env.TAG}}
+  # DOCKER_IMAGE: hieupth/tritonserver:${{env.TAG}}
 
 
 on:
@@ -21,6 +21,10 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
+      
+      - name: Set DOCKER_IMAGE environment variable
+        run: |
+          echo "DOCKER_IMAGE=hieupth/tritonserver:${{ env.TAG }}" >> $GITHUB_ENV
 
       - name: Set up Dockerfile
         run: |
