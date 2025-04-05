@@ -2,7 +2,7 @@ name: donwload_models
 env:
   HF_TOKEN: ${{secrets.HUGGINGFACE_TOKEN}}
   REPO_NAME: deepseek-ai
-  MODEL_NAME: DeepSeek-R1-Distill-Qwen-14B
+  MODEL_NAME: DeepSeek-R1-Distill-Qwen-32B
   # DOCKER_IMAGE: nvcr.io/nvidia/tritonserver:24.12-vllm-python-py3
   TAG: 24.12-vllm
   # DOCKER_IMAGE: hieupth/tritonserver:${{env.TAG}}
