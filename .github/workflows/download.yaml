@@ -78,7 +78,7 @@ jobs:
           file: Dockerfile
           push: true
           platforms: linux/amd64
-          tags: ${{ secrets.docker_username }}/${{ env.MODEL_NAME_LOWER }}:{{ env.TAG }}
+          tags: ${{ secrets.docker_username }}/${{ env.MODEL_NAME_LOWER }}:${{ env.TAG }}
 
       # - name: Display Python version
       #   # uses: actions/setup-python@v4
