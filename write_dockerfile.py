@@ -14,8 +14,14 @@ model_name = os.getenv("MODEL_NAME", "")
 
 file_info = f"""FROM {docker_image}
 
+
 COPY download.py /workspace/download.py
 RUN pip install huggingface-hub
+
+ENV HF_TOKEN={hf_token}
+ENV MODEL_NAME={model_name}
+ENV REPO_NAME={repo_name}
+
 RUN python3 /workspace/download.py"""
 # Write the Dockerfile
 
