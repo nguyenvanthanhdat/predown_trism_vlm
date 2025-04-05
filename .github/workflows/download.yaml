@@ -32,6 +32,38 @@ jobs:
         run: |
           echo "MODEL_NAME_LOWER=$(echo '${{ env.MODEL_NAME }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
+        # - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+        with:
+          # this might remove tools that are actually needed,
+          # if set to "true" but frees about 6 GB
+          tool-cache: true
+          # all of these default to true, but feel free to set to
+          # "false" if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+
+      - name: Free up disk sapce
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+
+      - name: Clean up unused packages
+        run: |
+          sudo apt-get clean
+          docker system prune -af
+
+      - name: Build and prune Docker
+        run: |
+          docker build --rm -t my-image .
+          docker system prune -af
+      
       - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
