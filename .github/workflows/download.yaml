@@ -5,7 +5,7 @@ env:
   MODEL_NAME: LLaMAX3-8B-Alpaca
   # DOCKER_IMAGE: nvcr.io/nvidia/tritonserver:24.12-vllm-python-py3
   TAG: 24.12-vllm
-  DOCKER_IMAGE: hieupth/tritonserver:${TAG}
+  DOCKER_IMAGE: hieupth/tritonserver:${{TAG}}
 
 
 on:
